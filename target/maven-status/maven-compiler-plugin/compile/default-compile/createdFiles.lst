@@ -1,0 +1,8 @@
+com/strut/crictribe/services/AuthService.class
+com/strut/crictribe/dto/RegisterRequest.class
+com/strut/crictribe/repository/UserRepository.class
+com/strut/crictribe/model/User$UserBuilder.class
+com/strut/crictribe/CricTribeApplication.class
+com/strut/crictribe/model/User$Role.class
+com/strut/crictribe/services/JwtService.class
+com/strut/crictribe/model/User.class
