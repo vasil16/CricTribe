@@ -1,6 +1,8 @@
 package com.strut.crictribe.services;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
+import com.strut.crictribe.dto.AuthenticationResponse;
+import com.strut.crictribe.dto.AuthenticationRequest;
 import org.springframework.stereotype.Service;
 
 import com.strut.crictribe.dto.RegisterRequest;
@@ -42,5 +44,21 @@ public class AuthService {
 
         return jwtService.generateToken(user.getEmail());
     }
+    
+    public AuthenticationResponse authenticate(AuthenticationRequest request) {
+        var user = userRepository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new RuntimeException("Invalid email or password"));
+
+        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+            throw new RuntimeException("Invalid email or password");
+        }
+
+        var jwtToken = jwtService.generateToken(user.getEmail());
+
+        return AuthenticationResponse.builder()
+                .token(jwtToken)
+                .build();
+    }
+
 
 } 

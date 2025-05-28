@@ -3,19 +3,13 @@ package com.strut.crictribe.dto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Data
 @Builder
-@NoArgsConstructor  // add this
-@AllArgsConstructor 
-
-public class RegisterRequest {
-    private String username;
+@AllArgsConstructor
+@NoArgsConstructor
+public class AuthenticationRequest {
     private String email;
     private String password;
-
-  
 }
